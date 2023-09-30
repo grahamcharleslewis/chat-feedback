@@ -11,25 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :chat_id, style: "display: block" %>
-    <%= form.number_field :chat_id %>
-  </div>
+  <%= form.hidden_field :chat_id %>
+  <%= form.hidden_field :uuid %>
+  <%= form.hidden_field :version %>
+  <%= form.hidden_field :level %>
 
-  <div>
-    <%= form.label :uuid, style: "display: block" %>
-    <%= form.text_field :uuid %>
-  </div>
-
-  <div>
-    <%= form.label :version, style: "display: block" %>
-    <%= form.text_field :version %>
-  </div>
-
-  <div>
-    <%= form.label :level, style: "display: block" %>
-    <%= form.text_field :level %>
-  </div>
+  <% feedback.message_questions["questions"].each do |question| %>
+    <%= question["title"] %><br>
+    <% question["options"].each do |option| %>
+      <%= radio_button_tag question["title"], option %> <%= option %>
+    <% end %>
+  <% end %>
 
   <div>
     <%= form.label :response, style: "display: block" %>

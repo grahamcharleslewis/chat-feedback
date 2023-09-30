@@ -4,8 +4,14 @@
 
 <% if @chats.any? %>
   <% @chats.each do |chat| %>
-    <%= render "chat", chat: chat %>
-    <%= render "feedbacks/feedback", feedback: Feedback.new(chat: chat, level: "message") %>
+    <article id="<%= dom_id chat %>">
+      <%= render "chat", chat: chat %>
+      <%= render "feedbacks/form", feedback: Feedback.new(
+                                               chat: chat, 
+                                               level: "message", 
+                                               uuid: chat.uuid,
+                                               version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
+    </article>
   <% end %>
 <% end %>
 
