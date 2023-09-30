@@ -16,7 +16,7 @@ class FeedbacksTest < ApplicationSystemTestCase
 
     fill_in "Chat", with: @feedback.chat_id
     fill_in "Response", with: @feedback.response
-    fill_in "Type", with: @feedback.type
+    fill_in "Level", with: @feedback.level
     fill_in "Uuid", with: @feedback.uuid
     fill_in "Version", with: @feedback.version
     click_on "Create Feedback"
@@ -31,7 +31,7 @@ class FeedbacksTest < ApplicationSystemTestCase
 
     fill_in "Chat", with: @feedback.chat_id
     fill_in "Response", with: @feedback.response
-    fill_in "Type", with: @feedback.type
+    fill_in "Level", with: @feedback.level
     fill_in "Uuid", with: @feedback.uuid
     fill_in "Version", with: @feedback.version
     click_on "Update Feedback"

@@ -19,10 +19,10 @@ class Feedback < ApplicationRecord
 
 private
 
-  def self.load_questions(type)
-    puts "Loading [#{type}] questions..."
-    config = YAML.load_file("data/#{type}.yaml")
-    config[ENV["#{type.upcase}_FEEDBACK_VERSION"]]
+  def self.load_questions(level)
+    puts "Loading [#{level}] questions..."
+    config = YAML.load_file("data/#{level}.yaml")
+    config[ENV["#{level.upcase}_FEEDBACK_VERSION"]]
   end
 end
 

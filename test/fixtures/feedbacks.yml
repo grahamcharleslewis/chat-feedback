@@ -4,12 +4,12 @@ one:
   chat_id: 1
   uuid: MyString
   version: MyString
-  type: 
+  level: 
   response: 
 
 two:
   chat_id: 1
   uuid: MyString
   version: MyString
-  type: 
+  level: 
   response: 

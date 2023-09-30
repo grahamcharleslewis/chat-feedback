@@ -5,7 +5,7 @@
 <% if @chats.any? %>
   <% @chats.each do |chat| %>
     <%= render "chat", chat: chat %>
-    <%= render "feedbacks/feedback", feedback: Feedback.new(chat: chat, type: "message") %>
+    <%= render "feedbacks/feedback", feedback: Feedback.new(chat: chat, level: "message") %>
   <% end %>
 <% end %>
 
