@@ -1,0 +1,32 @@
+<%= form_with(model: chat) do |form| %>
+  <% if chat.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+
+      <ul>
+        <% chat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :uuid, style: "display: block" %>
+    <%= form.text_field :uuid %>
+  </div>
+
+  <div>
+    <%= form.label :prompt, style: "display: block" %>
+    <%= form.text_area :prompt %>
+  </div>
+
+  <div>
+    <%= form.label :reply, style: "display: block" %>
+    <%= form.text_field :reply %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
