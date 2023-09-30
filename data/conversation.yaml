@@ -1,0 +1,18 @@
+survey:
+  questions:
+    - title: First question?
+      datatype: checkbox
+      options:
+        - Something
+        - Somthing else
+        - All of the above
+    - title: Second question?
+      datatype: text
+    - title: Third question?
+      datatype: radio
+      options:
+        - One
+        - Two
+        - Three
+    - title: Fourth question?
+      datatype: text
