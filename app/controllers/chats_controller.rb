@@ -9,14 +9,20 @@ class ChatsController < ApplicationController
   end
 
   def new
-    @chat = Chat.new(uuid: SecureRandom.uuid)
+    if params[:uuid]
+      @chat = Chat.new(uuid: params[:uuid])
+      @chats = Chat.where(uuid: params[:uuid])
+    else
+      @chat = Chat.new(uuid: SecureRandom.uuid)
+      @chats = []
+    end
   end
 
   def create
     @chat = Chat.new(chat_params)
 
     if @chat.save
-      redirect_to chat_url(@chat), notice: "Chat was successfully created."
+      redirect_to chat_url(@chat), notice: "Chat created."
     else
       render :new, status: :unprocessable_entity
     end

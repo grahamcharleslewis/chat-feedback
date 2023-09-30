@@ -1,17 +1,17 @@
 <div id="<%= dom_id feedback %>">
   <p>
     <strong>Chat:</strong>
-    <%= feedback.chat_id %>
+    <%= feedback.chat.id %>
   </p>
 
   <p>
     <strong>Uuid:</strong>
-    <%= feedback.uuid %>
+    <%= feedback.chat.uuid %>
   </p>
 
   <p>
     <strong>Version:</strong>
-    <%= feedback.version %>
+    <%= ENV["#{feedback.type.upcase}_FEEDBACK_VERSION"] %>
   </p>
 
   <p>
@@ -23,5 +23,4 @@
     <strong>Response:</strong>
     <%= feedback.response %>
   </p>
-
 </div>
