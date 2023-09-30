@@ -12,7 +12,7 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    @chat = Chat.new
+    @chat = Chat.new(uuid: SecureRandom.uuid)
   end
 
   # GET /chats/1/edit

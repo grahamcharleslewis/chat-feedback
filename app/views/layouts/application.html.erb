@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ChatFeedback</title>
+    <title>Chat Feedback Demo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "https://cdn.simplecss.org/simple.min.css" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>Chat Feedback Demo</h1>
+
+      <nav>
+        <%= link_to "Home", root_path %>
+        <%= link_to "Chats", chats_path %>
+        <%= link_to "Feedback", feedbacks_path %>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
