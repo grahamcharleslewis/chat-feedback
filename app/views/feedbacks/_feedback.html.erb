@@ -1,12 +1,14 @@
 <div id="<%= dom_id feedback %>">
-  <p>
-    <strong>Chat:</strong>
-    <%= feedback.chat.id %>
-  </p>
+  <% unless feedback.chat.nil? %>
+    <p>
+      <strong>Chat:</strong>
+      <%= feedback.chat.id %>
+    </p>
+  <% end %>
 
   <p>
     <strong>Uuid:</strong>
-    <%= feedback.chat.uuid %>
+    <%= feedback.uuid %>
   </p>
 
   <p>

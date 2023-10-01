@@ -6,15 +6,14 @@
   <% @chats.each do |chat| %>
     <article id="<%= dom_id chat %>">
       <%= render "chat", chat: chat %>
-      <%= render "feedbacks/form", feedback: Feedback.new(
-                                               chat: chat, 
-                                               level: "message", 
-                                               uuid: chat.uuid,
-                                               version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
+      <% unless chat.feedbacks.any? %>
+        <h2>Message feedback</h2>
+        <%= render "feedbacks/form", feedback: Feedback.new(
+                                                chat: chat, 
+                                                level: "message", 
+                                                uuid: chat.uuid,
+                                                version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
+      <% end %>
     </article>
   <% end %>
 <% end %>
-
-<div>
-  <%= link_to "Back to chats", chats_path %>
-</div>

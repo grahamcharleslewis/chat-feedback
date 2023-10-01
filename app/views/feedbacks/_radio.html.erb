@@ -1,0 +1,14 @@
+<%= question["title"] %><br>
+
+<ul>
+  <% question["options"].each do |option| %>
+    <li>
+      <%= radio_button_tag(
+        "answer_#{question['title']}",
+        option, 
+        false, 
+        required: question["mandatory"]) %> 
+      <%= option %>
+    </li>
+  <% end %>
+</ul>

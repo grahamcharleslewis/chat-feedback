@@ -1,0 +1,13 @@
+<%= question["title"] %><br>
+
+<ul>
+  <% question["options"].each_with_index do |option, index| %>
+    <li>
+      <%= check_box_tag(
+        "answer_#{question['title']}", 
+        option, 
+        false) %> 
+      <%= option %>
+    </li>
+  <% end %>
+</ul>

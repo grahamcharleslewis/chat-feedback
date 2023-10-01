@@ -2,6 +2,7 @@ simple:
   questions:
     - title: Is this correct?
       datatype: radio
+      mandatory: true
       options:
         - Yes
         - No
@@ -10,14 +11,17 @@ complex:
   questions:
     - title: First question?
       datatype: checkbox
+      mandatory: true
       options:
         - Something
-        - Somthing else
+        - Something else
         - All of the above
     - title: Second question?
       datatype: text
+      mandatory: false
     - title: Third question?
       datatype: radio
+      mandatory: true
       options:
         - One
         - Two

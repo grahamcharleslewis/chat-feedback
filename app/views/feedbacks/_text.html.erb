@@ -1,0 +1,6 @@
+<%= question["title"] %><br>
+
+<%= text_area_tag(
+  "answer_#{question['title']}",
+  "",
+  required: question["mandatory"]) %>

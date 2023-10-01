@@ -1,9 +1,16 @@
 <p>
+  <strong>UUID:</strong>
+  <%= chat.uuid %>
+</p>
+
+<p>
   <strong>Prompt:</strong>
   <%= chat.prompt %>
 </p>
 
-<p>
-  <strong>Reply:</strong>
-  <%= chat.reply %>
-</p>
+<% unless chat.nil? %>
+  <p>
+    <strong>Reply:</strong>
+    <%= chat.reply %>
+  </p>
+<% end %>

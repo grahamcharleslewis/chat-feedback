@@ -1,3 +1,5 @@
+require "faker"
+
 class ChatsController < ApplicationController
   before_action :set_chat, only: %i[ show ]
 
@@ -20,9 +22,10 @@ class ChatsController < ApplicationController
 
   def create
     @chat = Chat.new(chat_params)
+    @chat.reply = Faker::Company.bs
 
     if @chat.save
-      redirect_to chat_url(@chat), notice: "Chat created."
+      redirect_to new_chat_url(uuid: @chat.uuid), notice: "Chat created."
     else
       render :new, status: :unprocessable_entity
     end

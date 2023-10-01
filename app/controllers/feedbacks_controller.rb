@@ -9,14 +9,20 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @feedback = Feedback.new(chat: params[:chat])
+    # @feedback = Feedback.new(chat: params[:chat])
+
+    @feedback = Feedback.new(
+      level: "conversation", 
+      uuid: params[:uuid],
+      version: ENV["CONVERSATION_FEEDBACK_VERSION"])
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
+    @feedback.response = Feedback.create_response(params)
 
     if @feedback.save
-      redirect_to feedback_url(@feedback), notice: "Feedback created."
+      redirect_to new_chat_url(uuid: @feedback.uuid), notice: "Feedback created."
     else
       render :new, status: :unprocessable_entity
     end
