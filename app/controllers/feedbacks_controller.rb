@@ -1,16 +1,24 @@
+require "csv"
+
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[ show ]
 
   def index
     @feedbacks = Feedback.all
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers["Content-Type"] = "text/csv"
+        response.headers["Content-Disposition"] = "attachment; filename=feedback.csv"
+      end
+    end
   end
 
   def show
   end
 
   def new
-    # @feedback = Feedback.new(chat: params[:chat])
-
     @feedback = Feedback.new(
       level: "conversation", 
       uuid: params[:uuid],

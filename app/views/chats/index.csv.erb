@@ -1,0 +1,4 @@
+<%= CSV.generate_line Chat.column_names %>
+<% @chats.each do |chat| %>
+<%= CSV.generate_line(chat.attributes.values) %>
+<% end %>

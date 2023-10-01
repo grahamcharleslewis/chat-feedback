@@ -1,0 +1,4 @@
+<%= CSV.generate_line Feedback.column_names %>
+<% @feedbacks.each do |feedback| %>
+<%= CSV.generate_line(feedback.attributes.values) %>
+<% end %>

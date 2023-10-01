@@ -1,10 +1,19 @@
 require "faker"
+require "csv"
 
 class ChatsController < ApplicationController
   before_action :set_chat, only: %i[ show ]
 
   def index
     @chats = Chat.all
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers["Content-Type"] = "text/csv"
+        response.headers["Content-Disposition"] = "attachment; filename=chat.csv"
+      end
+    end
   end
 
   def show
