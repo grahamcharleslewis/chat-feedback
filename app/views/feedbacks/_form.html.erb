@@ -4,7 +4,7 @@
   <%= form.hidden_field :version %>
   <%= form.hidden_field :level %>
 
-  <% feedback.message_questions["questions"].each do |question| %>
+  <% questions.each do |question| %>
     <%= render "feedbacks/#{question['datatype']}", question: question %>
   <% end %>
 

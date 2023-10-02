@@ -9,10 +9,11 @@
       <% unless chat.feedbacks.any? %>
         <h2>Message feedback</h2>
         <%= render "feedbacks/form", feedback: Feedback.new(
-                                                chat: chat, 
-                                                level: "message", 
+                                                chat: chat,
+                                                level: "message",
                                                 uuid: chat.uuid,
-                                                version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
+                                                version: ENV["MESSAGE_FEEDBACK_VERSION"]),
+                                     questions: Feedback.message_questions["questions"] %>
       <% end %>
     </article>
   <% end %>
