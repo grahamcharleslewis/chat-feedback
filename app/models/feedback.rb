@@ -21,7 +21,13 @@ class Feedback < ApplicationRecord
     response = {}
     checkboxes = []
 
-    message_questions["questions"].each do |question|
+    if params["level"] == "conversation"
+      questions = conversation_questions["questions"]
+    else
+      questions = message_questions["questions"]
+    end
+
+    questions.each do |question|
       response[question["title"]] = ""
       if question["datatype"] == "checkbox"
         response[question["title"]] = []
@@ -37,10 +43,24 @@ class Feedback < ApplicationRecord
         else
           response[question] = value
         end
-      end 
-    end 
+      end
+    end
 
     response.to_json
+  end
+
+  def self.csv_headers
+    column_names + message_questions["questions"].pluck("title") + conversation_questions["questions"].pluck("title")
+  end
+
+  def self.csv_line(feedback)
+    if feedback.level == "conversation"
+      length = message_questions["questions"].length
+      feedback.attributes.values + Array.new(length) { "" } + JSON.parse(feedback.response).values
+    else
+      length = conversation_questions["questions"].length
+      feedback.attributes.values + JSON.parse(feedback.response).values + Array.new(length) { "" }
+    end
   end
 
 private
@@ -51,5 +71,3 @@ private
     config[ENV["#{level.upcase}_FEEDBACK_VERSION"]]
   end
 end
-
-
