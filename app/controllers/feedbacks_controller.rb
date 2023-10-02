@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[ show ]
 
   def index
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.where(version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]])
 
     respond_to do |format|
       format.html
@@ -20,7 +20,7 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new(
-      level: "conversation", 
+      level: "conversation",
       uuid: params[:uuid],
       version: ENV["CONVERSATION_FEEDBACK_VERSION"])
   end
