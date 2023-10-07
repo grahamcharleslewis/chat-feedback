@@ -1,14 +1,9 @@
 <%= question["title"] %><br>
 
-<ul>
-  <% question["options"].each do |option| %>
-    <li>
-      <%= radio_button_tag(
-        "answer_#{question['title']}",
-        option, 
-        false, 
-        required: question["mandatory"]) %> 
-      <%= option %>
-    </li>
-  <% end %>
-</ul>
+<% question["options"].each_with_index do |option, index| %>
+  <input type="radio" 
+         id="answers_<%= question['id'] %>_<%= index %>" 
+         name="answers[<%= question['id'] %>]" 
+         value="<%= option %>">
+  <label for="answers_<%= question['id'] %>_<%= index %>}"> <%= option %></label><br>
+<% end %>

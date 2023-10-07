@@ -1,6 +1,7 @@
-<%= question["title"] %><br>
+<label for="answers_<%= question['id'] %>"> <%= question['title'] %></label><br>
 
-<%= text_area_tag(
-  "answer_#{question['title']}",
-  "",
-  required: question["mandatory"]) %>
+<textarea id="answers_<%= question['id'] %>" 
+          name="answers[<%= question['id'] %>]" 
+          rows="4" 
+          cols="50">
+</textarea><br>

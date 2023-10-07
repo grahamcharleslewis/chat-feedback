@@ -1,25 +1,29 @@
 simple:
   questions:
-    - title: Is this correct?
+    - id: ABC
+      title: Is this correct?
       datatype: radio
       mandatory: true
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
 
 complex:
   questions:
-    - title: First question?
+    - id: BCD
+      title: First question?
       datatype: checkbox
       mandatory: true
       options:
         - Something
         - Something else
         - All of the above
-    - title: Second question?
+    - id: CDE
+      title: Second question?
       datatype: text
       mandatory: false
-    - title: Third question?
+    - id: DEF
+      title: Third question?
       datatype: radio
       mandatory: true
       options:

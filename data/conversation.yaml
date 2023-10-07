@@ -1,21 +1,25 @@
 survey:
   questions:
-    - title: First question?
+    - id: 123
+      title: First question?
       datatype: checkbox
       mandatory: true
       options:
         - Something
         - Something else
         - All of the above
-    - title: Second question?
+    - id: 234
+      title: Second question?
       datatype: text
       mandatory: false
-    - title: Third question?
+    - id: 345
+      title: Third question?
       datatype: radio
       mandatory: true
       options:
         - One
         - Two
         - Three
-    - title: Fourth question?
+    - id: 456
+      title: Fourth question?
       datatype: text

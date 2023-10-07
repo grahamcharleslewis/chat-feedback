@@ -1,18 +1,8 @@
-require "csv"
-
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[ show ]
 
   def index
     @feedbacks = Feedback.where(version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]])
-
-    respond_to do |format|
-      format.html
-      format.csv do
-        response.headers["Content-Type"] = "text/csv"
-        response.headers["Content-Disposition"] = "attachment; filename=feedback.csv"
-      end
-    end
   end
 
   def show
@@ -27,7 +17,7 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-    @feedback.response = Feedback.create_response(params)
+    @feedback.response = params["answers"]
 
     if @feedback.save
       redirect_to new_chat_url(uuid: @feedback.uuid), notice: "Feedback created."

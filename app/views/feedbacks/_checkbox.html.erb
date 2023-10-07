@@ -1,13 +1,9 @@
 <%= question["title"] %><br>
 
-<ul>
-  <% question["options"].each_with_index do |option, index| %>
-    <li>
-      <%= check_box_tag(
-        "answer_#{question['title']}_#{index}",
-        option,
-        false) %>
-      <%= option %>
-    </li>
-  <% end %>
-</ul>
+<% question["options"].each_with_index do |option, index| %>
+  <input type="checkbox" 
+         id="answers_<%= question['id'] %>_<%= index %>" 
+         name="answers[<%= question['id'] %>][<%= index %>]" 
+         value="<%= option %>">
+  <label for="answers_<%= question['id'] %>_<%= index %>}"> <%= option %></label><br>
+<% end %>
